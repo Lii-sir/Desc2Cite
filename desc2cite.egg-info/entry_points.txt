@@ -1,0 +1,2 @@
+[console_scripts]
+desc2cite = desc2cite.interfaces.cli.main:main
