@@ -8,11 +8,16 @@ version = "0.1.0"
 description = "Convert natural-language paper descriptions into structured citations and BibTeX."
 requires-python = ">=3.10"
 dependencies = [
+    "fastapi>=0.115.0",
     "openai>=1.30.0",
+    "uvicorn>=0.30.0",
 ]
 
 [project.scripts]
 desc2cite = "desc2cite.interfaces.cli.main:main"
+
+[tool.setuptools.packages.find]
+include = ["desc2cite*"]
 
 [tool.setuptools.package-data]
 "desc2cite.infrastructure" = ["data/*.json"]

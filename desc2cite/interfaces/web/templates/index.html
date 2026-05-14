@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desc2Cite</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Desc2Cite</p>
+          <h1>把自然语言论文描述，变成可用引用</h1>
+          <p class="subtitle">
+            输入中文或英文描述，支持 AI 改写、联网搜索、BibTeX 生成与候选结果查看。
+          </p>
+        </div>
+        <div class="hero-panel">
+          <form id="search-form" class="search-form">
+            <label class="field">
+              <span>论文描述</span>
+              <textarea
+                id="description"
+                name="description"
+                rows="5"
+                placeholder="例如：2017年那个提出纯注意力结构的transformer经典论文"
+                required
+              ></textarea>
+            </label>
+
+            <div class="options">
+              <label><input type="checkbox" id="remote" checked /> 联网搜索</label>
+              <label><input type="checkbox" id="ai-rewrite" checked /> AI 改写</label>
+              <label><input type="checkbox" id="use-minimax" checked /> MiniMax</label>
+            </div>
+
+            <div class="grid">
+              <label class="field">
+                <span>引用格式</span>
+                <select id="style">
+                  <option value="apa">APA</option>
+                  <option value="mla">MLA</option>
+                  <option value="plain">Plain</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>候选数量</span>
+                <input id="top-k" type="number" min="1" max="20" value="5" />
+              </label>
+            </div>
+
+            <button id="submit-btn" type="submit">开始检索</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="status" class="status"></section>
+
+      <section id="result" class="result hidden">
+        <div class="result-grid">
+          <article class="card">
+            <h2>主结果</h2>
+            <div id="chosen"></div>
+          </article>
+
+          <article class="card">
+            <h2>引用文本</h2>
+            <pre id="citation" class="code-block"></pre>
+          </article>
+
+          <article class="card wide">
+            <h2>BibTeX</h2>
+            <div class="actions">
+              <button id="copy-bib" type="button">复制 BibTeX</button>
+            </div>
+            <pre id="bibtex" class="code-block"></pre>
+          </article>
+
+          <article class="card wide">
+            <h2>候选结果</h2>
+            <div id="matches" class="matches"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

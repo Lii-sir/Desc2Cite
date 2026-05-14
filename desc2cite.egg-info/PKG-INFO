@@ -3,4 +3,6 @@ Name: desc2cite
 Version: 0.1.0
 Summary: Convert natural-language paper descriptions into structured citations and BibTeX.
 Requires-Python: >=3.10
+Requires-Dist: fastapi>=0.115.0
 Requires-Dist: openai>=1.30.0
+Requires-Dist: uvicorn>=0.30.0
